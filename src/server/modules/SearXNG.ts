@@ -1,4 +1,5 @@
 import qs from 'query-string';
+import urlJoin from 'url-join';
 
 import { SearchResponse } from '@/types/tool/search';
 
@@ -17,7 +18,7 @@ export class SearXNGClient {
         q: query,
       });
 
-      const response = await fetch(`${this.baseUrl}/search?${searchParams}`);
+      const response = await fetch(urlJoin(this.baseUrl, `/search?${searchParams}`));
 
       return await response.json();
     } catch (error) {

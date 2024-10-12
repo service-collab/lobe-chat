@@ -4,11 +4,11 @@ import { z } from 'zod';
 export const getToolsConfig = () => {
   return createEnv({
     runtimeEnv: {
-      SEARXNG_URL: process.env.SEARXNG_URL || 'https://searx.tiekoetter.com/',
+      SEARXNG_URL: process.env.SEARXNG_URL,
     },
 
     server: {
-      SEARXNG_URL: z.string().url(),
+      SEARXNG_URL: z.string().url().optional(),
     },
   });
 };
